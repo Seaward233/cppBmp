@@ -188,7 +188,7 @@ namespace std
             rgbQuad[i].rgbBlue = i;
             rgbQuad[i].rgbGreen = i;
             rgbQuad[i].rgbRed = i;
-            rgbQuad[i].rgbReserved = i;
+            rgbQuad[i].rgbReserved = 0;
         }
         bmpInfoHeader.biBitCount = 8;
         bmpFileHeader.bfOffBits = 14 + 40 + 1024;
