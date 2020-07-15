@@ -24,15 +24,7 @@ int main()
         {
             BMP bmp("2.3.bmp");
             Color c;
-            for (unsigned int i = 0; i < bmp.getHeight(); i++)
-            {
-                for (unsigned int j = 0; j < bmp.getWidth(); j++)
-                {
-                    c = bmp.getPixel(i, j);
-                    c.R = c.B;
-                    bmp.setPixel(i, j, c);
-                }
-            }
+            bmp.equalizeRedBlue();
             bmp.save("2.3.2.bmp");
         }
         return 0;

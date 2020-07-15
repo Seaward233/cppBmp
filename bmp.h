@@ -74,6 +74,7 @@ namespace std
         uint32_t getHeight();
         uint32_t getWidth();
         void reverseImageColor();
+        void equalizeRedBlue();
         void conv2Gray();  //把彩色图片转成灰度
         void save(string); //把图像保存成文件
     };

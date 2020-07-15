@@ -243,6 +243,20 @@ namespace std
             }
         }
     }
+    void BMP::equalizeRedBlue()
+    {
+        if (bmpInfo->image != nullptr)
+        {
+            for (uint32_t i = 0; i < bmpInfoHeader.biHeight; i++)
+            {
+                for (uint32_t j = 0; j < bmpInfoHeader.biWidth; j++)
+                {
+                    bmpInfo->image[i][j].B = bmpInfo->image[i][j].B / 2;
+                    bmpInfo->image[i][j].R = bmpInfo->image[i][j].B;
+                }
+            }
+        }
+    }
     void BMP::save(string path)
     {
         ofstream fout(path, ios::binary);
