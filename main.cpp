@@ -1,4 +1,5 @@
 #include "bmp.h"
+#include <iostream>
 using namespace std;
 int main()
 {
@@ -26,6 +27,11 @@ int main()
             Color c;
             bmp.equalizeRedBlue();
             bmp.save("2.3.2.bmp");
+        }
+        {
+            BMP bmp("3.3.bmp");
+            bmp.pixelize(32, 32, 128, 128, 8);
+            bmp.save("3.3.1.bmp");
         }
         return 0;
     }
