@@ -218,6 +218,31 @@ namespace std
             bmpInfo->image = nullptr;
         }
     }
+    void BMP::reverseImageColor()
+    {
+        if (bmpInfo->image != nullptr)
+        {
+            for (uint32_t i = 0; i < bmpInfoHeader.biHeight; i++)
+            {
+                for (uint32_t j = 0; j < bmpInfoHeader.biWidth; j++)
+                {
+                    bmpInfo->image[i][j].B = 255 - bmpInfo->image[i][j].B;
+                    bmpInfo->image[i][j].G = 255 - bmpInfo->image[i][j].G;
+                    bmpInfo->image[i][j].R = 255 - bmpInfo->image[i][j].R;
+                }
+            }
+        }
+        else if (bmpInfo->grayImage != nullptr)
+        {
+            for (uint32_t i = 0; i < bmpInfoHeader.biHeight; i++)
+            {
+                for (uint32_t j = 0; j < bmpInfoHeader.biWidth; j++)
+                {
+                    bmpInfo->grayImage[i][j] = 255 - bmpInfo->grayImage[i][j];
+                }
+            }
+        }
+    }
     void BMP::save(string path)
     {
         ofstream fout(path, ios::binary);

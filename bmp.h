@@ -73,6 +73,7 @@ namespace std
         void setPixelG(uint32_t, uint32_t, uint8_t); //设置第i行、第j列的颜色（灰度），行号以最下一行为第0行，列号以最左一列为第0列
         uint32_t getHeight();
         uint32_t getWidth();
+        void reverseImageColor();
         void conv2Gray();  //把彩色图片转成灰度
         void save(string); //把图像保存成文件
     };

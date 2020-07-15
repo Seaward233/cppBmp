@@ -18,18 +18,7 @@ int main()
         }
         {
             BMP bmp("2.2.bmp");
-            Color c;
-            for (unsigned int i = 0; i < bmp.getHeight(); i++)
-            {
-                for (unsigned int j = 0; j < bmp.getWidth(); j++)
-                {
-                    c = bmp.getPixel(i, j);
-                    c.R = 255 - c.R;
-                    c.G = 255 - c.G;
-                    c.B = 255 - c.B;
-                    bmp.setPixel(i, j, c);
-                }
-            }
+            bmp.reverseImageColor();
             bmp.save("2.2.2.bmp");
         }
         {
