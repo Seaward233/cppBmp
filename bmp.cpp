@@ -257,6 +257,10 @@ namespace std
             }
         }
     }
+    Color **BMP::getImage()
+    {
+        return bmpInfo->image;
+    }
     void BMP::save(string path)
     {
         ofstream fout(path, ios::binary);
@@ -337,5 +341,38 @@ namespace std
             throw "不支持的颜色深度";
         }
         fout.close();
+    }
+    void BMP::pixelize(uint32_t in1, uint32_t in2, uint32_t in3, uint32_t in4, uint32_t in5)
+    {
+        if (bmpInfo->image != nullptr)
+        {
+            for (uint32_t i = in1; i < in3; i = i + in5)
+            {
+                for (uint32_t j = in2; j < in4; j = j + in5)
+                {
+                    Color avg;
+                    uint32_t b = 0, g = 0, r = 0;
+                    for (uint32_t ii = i; ii < i + in5; ++ii)
+                    {
+                        for (uint32_t jj = j; jj < j + in5; ++jj)
+                        {
+                            b = b + bmpInfo->image[ii][jj].B;
+                            g = g + bmpInfo->image[ii][jj].G;
+                            r = r + bmpInfo->image[ii][jj].R;
+                        }
+                    }
+                    avg.B = b / (in5 * in5);
+                    avg.G = g / (in5 * in5);
+                    avg.R = r / (in5 * in5);
+                    for (uint32_t ii = i; ii < i + in5; ++ii)
+                    {
+                        for (uint32_t jj = j; jj < j + in5; ++jj)
+                        {
+                            bmpInfo->image[ii][jj] = avg;
+                        }
+                    }
+                }
+            }
+        }
     }
 } // namespace std

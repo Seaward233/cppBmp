@@ -1,4 +1,5 @@
-#include <iostream>
+#ifndef BMP_
+#define BMP_
 #include <fstream>
 #include <string>
 namespace std
@@ -75,7 +76,10 @@ namespace std
         uint32_t getWidth();
         void reverseImageColor();
         void equalizeRedBlue();
+        Color **getImage();
         void conv2Gray();  //把彩色图片转成灰度
         void save(string); //把图像保存成文件
+        void pixelize(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     };
 } // namespace std
+#endif // BMP_
